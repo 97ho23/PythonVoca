@@ -13,31 +13,39 @@ app = Flask(__name__)
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
-db = client.dbprac
+db = client.vocadb
 
-# set directory with yours
-base_dir = 'C:/Users/YOON/Desktop/SPARTA/my_project/samples'
-excel_file = 'sales_per_region.xlsx'
-excel_dir = os.path.join(base_dir, excel_file)
 
-# read a excel file and make it as a DataFrame
-df= pd.read_excel(excel_dir,  # write your directory here
-                              sheet_name='Sheet1',
-                              header=0,
-                              # names = ['region', 'sales_representative', 'sales_amount'],
-                              dtype={'region': str,
-                                     'sales_representative': np.int64,
-                                     'sales_amount': float},  # dictionary type
-                              )
+## 화면전환 테스트
+@app.route('/test')
+def test():
+    return render_template('mainpage.html')
 
-print(df)
-print(df.to_dict())
-voca_dict = df.to_dict('records')
 
-print('keys**********')
-print(voca_dict[0].keys())
-print(voca_dict)
-print(type(voca_dict[0]))
-print(type(voca_dict))
-#db.practice.insert(voca_dict)
+## 메인 화면 보여주기
+@app.route('/')
+def show_mainpage():
+    return render_template('mainpage.html')
 
+
+# 단어리스트 화면 보여주기
+@app.route('/vocalist', methods=['POST'])
+def load_vocalist_view():
+    day_receive = request.form['day_give']
+    send_vocalist = list(db.voca.find({'day': day_receive}, {'_id': False}))
+    print(day_receive)
+    # return jsonify({'result': 'success', 'vocalist': send_vocalist})
+    return render_template('vocalist.html', vocalist=send_vocalist)
+
+
+# 데이리스트 불러오기
+@app.route('/learninglist', methods=['GET'])
+def view_learninglist():
+    # 여길 채워나가세요!
+    all_learning = list(db.learning.find({}, {'_id': False}))
+    print(all_learning)
+    return jsonify({'result': 'success', 'learning': all_learning})
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', port=5000, debug=True)
