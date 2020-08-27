@@ -16,26 +16,30 @@ client = MongoClient('localhost', 27017)
 db = client.vocadb
 
 
-## 화면전환 테스트
+# 화면전환 테스트
 @app.route('/test')
 def test():
     return render_template('mainpage.html')
 
 
-## 메인 화면 보여주기
+# 메인 화면 보여주기
 @app.route('/')
 def show_mainpage():
     return render_template('mainpage.html')
 
+# 화면전환 테스트
+@app.route('/start')
+def start_learning():
+    return render_template('learning.html')
+
 
 # 단어리스트 화면 보여주기
-@app.route('/vocalist', methods=['POST'])
+@app.route('/vocalist', methods=['GET'])
 def load_vocalist_view():
-    day_receive = request.form['day_give']
-    send_vocalist = list(db.voca.find({'day': day_receive}, {'_id': False}))
+    day_receive = request.args.get('day_give')
     print(day_receive)
-    # return jsonify({'result': 'success', 'vocalist': send_vocalist})
-    return render_template('vocalist.html', vocalist=send_vocalist)
+    send_vocalist = list(db.voca.find({'day': day_receive}, {'_id': False}))
+    return jsonify({'result': 'success', 'vocalist': send_vocalist})
 
 
 # 데이리스트 불러오기

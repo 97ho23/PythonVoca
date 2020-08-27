@@ -6,10 +6,9 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v4.1.1">
-        <title>{{vocalist}}영 단 학 - 단어리스트</title>
+        <title>영 단 학 - 메인페이지</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
-
 
 
         <!-- Bootstrap core CSS
@@ -35,7 +34,7 @@
         <!-- Custom styles for this template
             <link href="dashboard.css" rel="stylesheet">
         -->
-        <link href="{{ url_for('static', filename='js/vocalist.js') }}" rel="script">
+        <link href="{{ url_for('static', filename='js/mainpage.js') }}" rel="script">
         <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
     </head>
     <body>
@@ -101,7 +100,7 @@
 
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" id="reset-btn" href="#">
+                                <a class="nav-link" id="reset-btn" href="#" style="color: red">
                                     <span data-feather="file-text"></span>
                                     초기화
                                 </a>
@@ -114,32 +113,43 @@
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                         <h1 class="h2">토익 영단어</h1>
+
                     </div>
 
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h3>Day NNN</h3>
-                        <div class="btn-toolbar mb-2 mb-md-0">
+                        <h3 id="learning-title">학습 목차</h3>
+                        <div class="btn-toolbar mb-2 mb-md-0" id="learning-startbtn">
                             <button type="button" onclick="location.href = '#'"
-                                    class="btn btn-lg btn-outline-secondary">
+                                    class="btn btn-lg btn-outline-secondary"
+                                    disabled="disabled">
                                 학습시작
                             </button>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                            <tr>
-                                <th>Day</th>
-                                <th>반복횟수</th>
-                            </tr>
-                            </thead>
-                            <tbody id="learning-list">
 
-                            <!-- append로 들어올 자리 -->
-
-                            </tbody>
-                        </table>
+                    <!-- 뒤로가기 버튼 -->
+                    <a href="/vocalist?day_give=day1">
+                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-arrow-left-short"
+                             fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg"
+                             href="/vocalist?day_give=">
+                            <path fill-rule="evenodd"
+                                  d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+                            <path fill-rule="evenodd"
+                                  d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </a>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
                     </div>
+
                 </main>
             </div>
         </div>
@@ -164,7 +174,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
-        <script src="{{ url_for('static', filename='js/vocalist.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/mainpage.js') }}"></script>
 
     </body>
 </html>

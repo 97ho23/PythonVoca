@@ -6,16 +6,10 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Jekyll v4.1.1">
-        <title>Dashboard Template · Bootstrap</title>
+        <title>영 단 학 - 메인페이지</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
-        <script>
-            (function () {
-                'use strict'
-                feather.replace()
-            }())
-        </script>
 
         <!-- Bootstrap core CSS
         <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -123,9 +117,9 @@
                     </div>
 
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h3>학습 목차</h3>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <button type="button" onclick="location.href = '#'"
+                        <h3 id="learning-title">학습 목차</h3>
+                        <div class="btn-toolbar mb-2 mb-md-0" id="learning-startbtn">
+                            <button type="button"
                                     class="btn btn-lg btn-outline-secondary"
                                     disabled="disabled">
                                 학습시작
@@ -136,12 +130,12 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-sm">
                             <thead>
-                            <tr>
+                            <tr id="learning-list-header">
                                 <th>Day</th>
                                 <th>반복횟수</th>
                             </tr>
                             </thead>
-                            <tbody id="learning-list">
+                            <tbody id="learning-list-body">
 
                             <!-- append로 들어올 자리 -->
 

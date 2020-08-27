@@ -1,9 +1,14 @@
+(function () {
+    'use strict'
+    feather.replace()
+}())
+
 function appendLearning(day, count) {
-    let temp_html = `<tr>
+    let days_html = `<tr>
                             <td><a class="nav-link" id=${day} onclick="showVocalist(id)">${day}</a></td>
                             <td>${count}</td>
                      </tr>`
-    $('#learning-list').append(temp_html)
+    $('#learning-list-body').append(days_html)
 }
 
 function showLearninglist() {
@@ -27,14 +32,58 @@ function showLearninglist() {
     })
 }
 
+function changePage(day) {
+
+    let startbtn_html = `<button type="button" onclick="location.href = '/start'"
+                                    class="btn btn-lg btn-outline-primary">
+                                학습시작
+                            </button>`
+
+    let listheader_html = `<th>단어</th>
+                           <th>뜻</th>`
+
+    $('#learning-title').empty()
+    $('#learning-title').append(`${day}`)
+
+    $('#learning-startbtn').empty()
+    $('#learning-startbtn').append(startbtn_html)
+
+    $('#learning-list-header').empty()
+    $('#learning-list-header').append(listheader_html)
+
+    $('#learning-list-body').empty()
+}
+
+function changeList(voca, mean) {
+
+    let vocas_html = `<tr>
+                            <td><a class="nav-link">${voca}</a></td>
+                            <td>${mean}</td>
+                     </tr>`
+
+    $('#learning-list-body').append(vocas_html)
+
+}
+
 function showVocalist(day) {
     $.ajax({
-        type: "POST",
-        url: "/vocalist",
-        data: {day_give: day},
+        type: "GET",
+        url: "/vocalist?day_give=" + day,
+        data: {},
         success: function (response) {
-            $('body').html(response)
-            alert('완료')
+            if (response["result"] == "success") {
+                changePage(day)
+
+                let vocalist1 = response['vocalist']
+
+                for (let i = 0; i < vocalist1.length; i++) {
+                    let voca = vocalist1[i]['voca']
+                    let mean = vocalist1[i]['mean']
+
+                    changeList(voca, mean)
+                }
+                alert("단어리스트 불러오기 완료")
+            }
         }
     })
 }
