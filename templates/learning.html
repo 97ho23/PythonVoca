@@ -127,25 +127,40 @@
                         </div>
                     </div>
 
-                    <!-- 뒤로가기 버튼 -->
-                    <a href="/vocalist?day_give=day1">
-                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-arrow-left-short"
-                             fill="currentColor"
-                             xmlns="http://www.w3.org/2000/svg"
-                             href="/vocalist?day_give=">
-                            <path fill-rule="evenodd"
-                                  d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
-                            <path fill-rule="evenodd"
-                                  d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
-                        </svg>
-                    </a>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <!-- 카드 구역 -->
+                    <div card_container style="position: relative; width: 100%; height: 100%;">
+                        <div class="card-deck"
+                             style="position: absolute; top: 50%; left: 25%; transform: translate(-15%, -15%)">
+                            <!-- 왼쪽 화살표 -->
+                            <div class="card text-center">
+                                <div class="card-body" style="width: 160px; height: 120px;">
+                                    <p class="card-text"
+                                       style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                                        모릅니다
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- 단어 카드 -->
+                            <div class="card text-center bg-success text-white">
+                                <h1></h1>
+                                <div class="card-body" style="width: 160px; height: 120px;">
+                                    <p class="card-text"
+                                       style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                                        단어자리
+                                    </p>
+                                </div>
+                                <h1></h1>
+                            </div>
+                            <!-- 오른쪽 화살표 -->
+                            <div class="card">
+                                <h1></h1>
+                                <div class="card-body" style="width: 160px; height: 120px;">
+                                    <p class="card-text"
+                                       style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                                        안다
+                                    </p>
+                                </div>
+                                <h1></h1>
                             </div>
                         </div>
                     </div>

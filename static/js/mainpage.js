@@ -82,7 +82,7 @@ function showVocalist(day) {
 
                     changeList(voca, mean)
                 }
-                alert("단어리스트 불러오기 완료")
+                alert(day + " 단어리스트 불러오기")
             }
         }
     })
