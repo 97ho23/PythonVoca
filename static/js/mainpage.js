@@ -3,14 +3,16 @@
     feather.replace()
 }())
 
-function appendLearning(day, count) {
-    let days_html = `<tr>
-                            <td><a class="nav-link" id=${day} onclick="showVocalist(id)">${day}</a></td>
+// in showLearninglist()
+function appendLearninglist(day, count) {
+    let learninglist_html = `<tr>
+                            <td><a class="nav-link" id=${day} onclick="moveToVocalist(id)">${day}</a></td>
                             <td>${count}</td>
                      </tr>`
-    $('#learning-list-body').append(days_html)
+    $('#learning-list-body').append(learninglist_html)
 }
 
+// when document ready
 function showLearninglist() {
     $.ajax({
         type: "GET",
@@ -23,7 +25,7 @@ function showLearninglist() {
                     let day = learnings[i]['day']
                     let count = learnings[i]['count']
 
-                    appendLearning(day, count)
+                    appendLearninglist(day, count)
                 }
             } else {
                 alert("불러오기 오류")
@@ -32,62 +34,19 @@ function showLearninglist() {
     })
 }
 
-function changePage(day) {
+$(document).ready(function () {
+    showLearninglist()
+});
 
-    let startbtn_html = `<button type="button" onclick="location.href = '/start'"
-                                    class="btn btn-lg btn-outline-primary">
-                                학습시작
-                            </button>`
-
-    let listheader_html = `<th>단어</th>
-                           <th>뜻</th>`
-
-    $('#learning-title').empty()
-    $('#learning-title').append(`${day}`)
-
-    $('#learning-startbtn').empty()
-    $('#learning-startbtn').append(startbtn_html)
-
-    $('#learning-list-header').empty()
-    $('#learning-list-header').append(listheader_html)
-
-    $('#learning-list-body').empty()
-}
-
-function changeList(voca, mean) {
-
-    let vocas_html = `<tr>
-                            <td><a class="nav-link">${voca}</a></td>
-                            <td>${mean}</td>
-                     </tr>`
-
-    $('#learning-list-body').append(vocas_html)
-
-}
-
-function showVocalist(day) {
+// onclick day in 'learning list'
+function moveToVocalist(day) {
     $.ajax({
         type: "GET",
-        url: "/vocalist?day_give=" + day,
+        url: "/day_choose?day_give=" + day,
         data: {},
         success: function (response) {
-            if (response["result"] == "success") {
-                changePage(day)
-
-                let vocalist1 = response['vocalist']
-
-                for (let i = 0; i < vocalist1.length; i++) {
-                    let voca = vocalist1[i]['voca']
-                    let mean = vocalist1[i]['mean']
-
-                    changeList(voca, mean)
-                }
-                alert(day + " 단어리스트 불러오기")
-            }
+            $('body').html(response)
         }
     })
 }
 
-$(document).ready(function () {
-    showLearninglist()
-});
