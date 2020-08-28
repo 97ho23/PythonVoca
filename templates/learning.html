@@ -65,7 +65,7 @@
                     <div class="sidebar-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link active" href="/">
                                     <span data-feather="book"></span>
                                     토익 영단어 <span class="sr-only">(current)</span>
                                 </a>
@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h3 id="learning-title">학습 목차</h3>
+                        <h3 id="learning-title">day</h3>
                         <div class="btn-toolbar mb-2 mb-md-0" id="learning-startbtn">
                             <button type="button" onclick="location.href = '#'"
                                     class="btn btn-lg btn-outline-secondary"
@@ -132,36 +132,48 @@
                         <div class="card-deck"
                              style="position: absolute; top: 50%; left: 25%; transform: translate(-15%, -15%)">
                             <!-- 왼쪽 화살표 -->
+
                             <div class="card text-center">
-                                <div class="card-body" style="width: 160px; height: 120px;">
-                                    <p class="card-text"
-                                       style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-                                        모릅니다
-                                    </p>
-                                </div>
+                                <a onclick="vocaCountMinus()">
+                                    <div class="card-body" style="width: 160px; height: 120px;">
+                                        <p class="card-text"
+                                           style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                                            모릅니다
+                                        </p>
+                                    </div>
+                                </a>
                             </div>
+
                             <!-- 단어 카드 -->
+
                             <div class="card text-center bg-success text-white">
-                                <h1></h1>
-                                <div class="card-body" style="width: 160px; height: 120px;">
-                                    <p class="card-text"
-                                       style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-                                        단어자리
-                                    </p>
-                                </div>
-                                <h1></h1>
+                                <a onclick="reverseCard()">
+                                    <h1></h1>
+                                    <div class="card-body" id="main-card" style="width: 160px; height: 120px;">
+                                        <p class="card-text"
+                                           style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                                            단어자리
+                                        </p>
+                                    </div>
+                                    <h1></h1>
+                                </a>
                             </div>
+
                             <!-- 오른쪽 화살표 -->
+
                             <div class="card">
-                                <h1></h1>
-                                <div class="card-body" style="width: 160px; height: 120px;">
-                                    <p class="card-text"
-                                       style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-                                        안다
-                                    </p>
-                                </div>
-                                <h1></h1>
+                                <a onclick="vocaCountPlus()">
+                                    <h1></h1>
+                                    <div class="card-body" style="width: 160px; height: 120px;">
+                                        <p class="card-text"
+                                           style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                                            안다
+                                        </p>
+                                    </div>
+                                    <h1></h1>
+                                </a>
                             </div>
+
                         </div>
                     </div>
 
@@ -189,7 +201,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
-        <script src="{{ url_for('static', filename='js/mainpage.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/learning.js') }}"></script>
 
     </body>
 </html>

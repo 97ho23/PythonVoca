@@ -53,8 +53,6 @@ def show_vocalistpage():
     print("day_receive = " + day_receive)
     global chosen_day
     chosen_day = day_receive
-    # send_vocalist = list(db.voca.find({'day': day_receive}, {'_id': False}))
-    # return jsonify({'result': 'success', 'vocalist': send_vocalist})
     return render_template('vocalist.html')
 
 

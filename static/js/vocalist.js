@@ -3,22 +3,23 @@
     feather.replace()
 }())
 
+// in showVocalist()
 function appendVocalist(voca, mean) {
     let vocalist_html = `<tr>
-                            <td><a class="nav-link">${voca}</a></td>
+                            <td>${voca}</td>
                             <td>${mean}</td>
                      </tr>`
 
     $('#learning-list-body').append(vocalist_html)
 }
 
+// when document ready
 function showVocalist() {
     $.ajax({
         type: "GET",
         url: "/vocalist",
         data: {},
         success: function (response) {
-            alert("단어리스트창")
             if (response["result"] == "success") {
                 let chosen_day = response['chosen_day']
                 let vocalist = response['vocalist']
